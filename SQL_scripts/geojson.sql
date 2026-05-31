@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS geojson;
+
+CREATE TABLE IF NOT EXISTS geojson (
+id SERIAL PRIMARY KEY,
+geometry GEOMETRY(MULTILINESTRING,4326),
+name TEXT,
+type TEXT,
+email TEXT
+);
+
+CREATE INDEX idx_geojson_v2 ON geojson_v2 USING GIST(geometry);

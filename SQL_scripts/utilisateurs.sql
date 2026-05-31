@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS utilisateurs;
+
+CREATE TABLE IF NOT EXISTS utilisateurs (
+id SERIAL PRIMARY KEY,
+email TEXT UNIQUE,
+mdp TEXT
+);
