@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/icon-chpgx.png"/>
+
+    <title>CHgpx</title>
+    <script type="module" crossorigin src="/assets/index-CYeLT4FF.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-f93rYl2F.css">
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="track-panel">
+       <p class="panel-title">Traces GPS</p>
+        <ul style="list-style-type:none;">
+        <div id="checkboxes">
+        </div>
+        </ul>
+    </div>
+
+    <h1 class="title_box"><span id="logo">CH<span>gpx</span></span></h1>
+    <p class="copyright">© 2026 - Loïc Baud & Nicolas Erne</p>
+
+    <div class="login">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="votre@email.com" required>
+      <label for="mdp">Mot de passe</label>
+      <input type="password" name="mdp" id="mdp" placeholder="••••••••" required>
+      <div class="login-buttons">
+        <button id="login_button">Login</button>
+        <button id="register_button">Register</button>
+      </div>
+        <button id="logout_button">Se déconnecter</button>
+    </div>
+    <h2 class="title_drop_zone">Charger une trace GPS</h2>
+    <label id="drop-zone">
+      <input type="file" id="file-input" accept=".gpx" />
+    </label>
+
+    <div id="stats-panel">Statistiques
+        <span id = "dist"> Distance : </span>
+        <span id = "d_plus">Dénivelé positif :</span>
+        <select id = "comparateur_courses">
+            <option value="">Choisir une course</option>
+            <option value = "UTMB">UTMB</option>
+            <option value = "DiagFou" id = "DiagFou">Diagonale des fous</option>
+            <option value = "Marathon" id = "Marathon">Marathon</option>
+            <option value = "SwissMan" id="SwissMan">SwissMan</option>
+            <option value = "UltraTerrestre" id="UltraTerrestre">Ultraterrestre</option>
+        </select>
+        <span id = "resulats_comparaison"></span>
+    </div>
+
+
+
+    <script>
+        let sessionId = null;
+
+        async function login () {
+            const email = document.getElementById('email').value;
+            const mdp = document.getElementById('mdp').value;
+
+            const reponse = await fetch('http://localhost:8000/login', {
+                method: 'POST',
+                mode : 'cors',
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body : JSON.stringify({
+                    email : email,
+                    mdp : mdp
+                })
+            });
+
+            const res = await reponse.json();
+            console.log(res);
+
+            if (res.session_id) {
+                sessionId = res.session_id;
+                console.log("ID de session", sessionId);
+            }
+        }
+        async function register () {
+            const email = document.getElementById('email').value;
+            const mdp = document.getElementById('mdp').value;
+
+            const reponse = await fetch('http://localhost:8000/register', {
+                method: 'POST',
+                mode : 'cors',
+                credentials : 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body : JSON.stringify({
+                    email : email,
+                    mdp : mdp
+                })
+            });
+
+            const res = await reponse.json();
+            console.log(res);
+
+            if (res.session_id) {
+                sessionId = res.session_id;
+                console.log("ID de session", sessionId);
+            }
+        }
+        async function logout () {
+            const reponse = await fetch('http://localhost:8000/logout', {
+                method: 'POST',
+                mode : 'cors',
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+            const res = await reponse.json();
+            console.log(res);
+            window.location.reload();
+        }
+
+        document.getElementById('login_button').addEventListener('click',login);
+        document.getElementById('register_button').addEventListener('click',register);
+        document.getElementById('logout_button').addEventListener('click',logout);
+    </script>
+  </body>
+</html>
