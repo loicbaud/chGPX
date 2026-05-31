@@ -26,9 +26,6 @@ de pouvoir évaluer son effort.
 ---
 
 ## Architecture
-Il ne s'agit que d'un aperçu de toute l'arborescence du dossier.
-En cas de déploiement seul le dossier Production serait publié.
-
 ```
 CHgpx/     
 ├── Production                    #Bundle du projet
@@ -51,8 +48,6 @@ CHgpx/
 ---
 
 ## Installation
-
-Cette marche à suivre est à utiliser comme si le dossier Production était un repo public.
 
 ### 1. Cloner le dépôt
 
