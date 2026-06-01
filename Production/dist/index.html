@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/png" href="img/icon-chpgx.png"/>
 
     <title>CHgpx</title>
-    <script type="module" crossorigin src="/assets/index-CYeLT4FF.js"></script>
+    <script type="module" crossorigin src="/assets/index-CZ0JJ3ly.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-f93rYl2F.css">
   </head>
   <body>
@@ -54,7 +55,8 @@
     </div>
 
 
-
+
+
     <script>
         let sessionId = null;
 
@@ -62,7 +64,7 @@
             const email = document.getElementById('email').value;
             const mdp = document.getElementById('mdp').value;
 
-            const reponse = await fetch('http://localhost:8000/login', {
+            const reponse = await fetch('https://chgpx.loicbaud.cloud/login', {
                 method: 'POST',
                 mode : 'cors',
                 credentials: 'include',
@@ -87,7 +89,7 @@
             const email = document.getElementById('email').value;
             const mdp = document.getElementById('mdp').value;
 
-            const reponse = await fetch('http://localhost:8000/register', {
+            const reponse = await fetch('https://chgpx.loicbaud.cloud/register', {
                 method: 'POST',
                 mode : 'cors',
                 credentials : 'include',
@@ -109,7 +111,7 @@
             }
         }
         async function logout () {
-            const reponse = await fetch('http://localhost:8000/logout', {
+            const reponse = await fetch('https://chgpx.loicbaud.cloud/logout', {
                 method: 'POST',
                 mode : 'cors',
                 credentials: 'include',
