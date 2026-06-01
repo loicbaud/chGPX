@@ -8,4 +8,4 @@ type TEXT,
 email TEXT
 );
 
-CREATE INDEX idx_geojson_v2 ON geojson_v2 USING GIST(geometry);
+CREATE INDEX idx_geojson ON geojson USING GIST(geometry);
