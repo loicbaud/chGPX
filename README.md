@@ -76,39 +76,6 @@ CREATE EXTENSION postgis;
 python app.py #Windows
 python3 app.py #Linux
 ```
-
----
-## FRONTEND
-Fonctions principales du frontend. Le code est également commenté. 
-### `handleFiles` :
-Pipeline de traitement des fichiers GPX. 
-- **Input** : fichier GPX sélectionné par l'utilisateur
-- Envoi au backend avec `sendToBackend` et lance le chainage des promesses
-
-### `sendToBackend` :
-Emballes les fichiers dans un FormData pour l'envoi au backend
-
-### `loadGpsTracks` :
-Récupère les traces GPS au format GeoJSON,  depuis le backend.
-- **Input** : tableau de fichiers GPX
-- Normalise le GeoJSON, créer un couche et une source vectorielle 
-, stock la couche dans un objet et l'ajoute à la carte.
-
-### `loadStats` :
-Récupère les statistiques calculées par le backend.
-- **Input** : tableau de fichiers GPX
-- Envoi les fichiers au backend qui calcul 
-les stats relatives au fichier envoyé. 
-- Initalisation de la checkbox pour afficher les stats 
-quand la premiere couche est chargée. 
-
-### `layerPanel` :
-- **Input** : tableau de fichiers GPX
-- Permet de créer dynamiquement des cases 
-à cocher. Listener sur la checkbox pour montrer 
-/ cacher la couche correspondante.
-
-
 ---
 
 ## Auteurs
